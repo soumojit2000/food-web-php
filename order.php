@@ -72,7 +72,7 @@ $res = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_assoc($res)) {
         ?>
 
-        <div class="col-md-3 col-sm-6 mb-4">
+        <div class="col-12 col-md-4 col-lg-3 mb-4">
             <div class="card food-card p-2">
                 
                 <img src="uploads/<?= htmlspecialchars($row['image']) ?>" class="card-img-top" alt="Food Image">

@@ -14,7 +14,7 @@ $res = mysqli_query($conn, $sql);
 
 <body class="container py-4">
 
-<h2>Shopping Cart</h2>
+<h2>My Cart</h2>
 <a href="order.php?cat=All" class="btn btn-primary btn-sm mb-3">Continue Shopping</a>
 
 <?php if(mysqli_num_rows($res) > 0){ ?>
