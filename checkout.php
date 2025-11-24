@@ -64,11 +64,7 @@ if (isset($_POST['checkout'])) {
                 mysqli_query($conn, "UPDATE food SET quantity=$newStock WHERE id=$pid");
             }
 
-            // Insert order record into food table (your current logic)
-            mysqli_query($conn,
-                "INSERT INTO food (name, price, quantity, category, image, status)
-                 VALUES ('$name', '$price', '$qty', 'Order', '$img', 1)"
-            );
+            
         }
 
         // Empty cart
