@@ -1,3 +1,25 @@
+<?php
+session_start();
+require 'config.php';
+
+// FIRST: Protect Page
+if(!isset($_SESSION['name'])){
+  $_SESSION['error_msg'] = "You must login first!";
+  header("Location: login.php");
+  exit();
+}
+
+// SECOND: Fetch Flash Messages
+$success_msg = $_SESSION['success_msg'] ?? "";
+$error_msg   = $_SESSION['error_msg'] ?? "";
+
+// THIRD: Clear Flash Messages
+unset($_SESSION['success_msg']);
+unset($_SESSION['error_msg']);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,10 +46,23 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/solid.min.css"
     />
-
-    <link rel="stylesheet" href="main.css" />
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- custom css -->
+    <link rel="stylesheet" href="main.css?v=1" />
+    
   </head>
   <body>
+    <!-- ALERT MESSAGES -->
+    <div class="container mt-3">
+        <?php if ($error_msg): ?>
+            <div class="alert alert-danger"><?= $error_msg ?></div>
+        <?php endif; ?>
+
+        <?php if ($success_msg): ?>
+            <div class="alert alert-success"><?= $success_msg ?></div>
+        <?php endif; ?>
+    </div>
     <header>
       <div class="navbar">
         <div class="container">
@@ -49,6 +84,9 @@
                 <li><a href="#stats">Stats</a></li>
                 <li><a href="#feedback">Feedback</a></li>
                 <li><a href="#contact_us">Contact Us</a></li>
+
+                <li><a href="#" class="text-warning log-p">User:<?= $_SESSION['name']; ?></a></li>
+                <li><a href="logout.php" class="text-dark log-p btn btn-warning w-100 w-md-auto fw-bold">Logout</a></li>
               </ul>
             </div>
           </nav>

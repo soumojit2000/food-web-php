@@ -1,5 +1,18 @@
 <?php
-include "config.php";
+session_start();
+require 'config.php';
+
+if(!isset($_SESSION['name'])){
+  $_SESSION['error_msg']= "Yopu must login first!";
+  header("Location: login.php");
+  exit();
+}
+
+$error_msg = $_SESSION['error_msg'] ?? "";
+$success_msg = $_SESSION['success_msg'] ?? "";
+
+unset($_SESSION['error_msg']);
+unset($_SESSION['success_msg']);
 
 // Step 1: Get category from URL (optional)
 $category = isset($_GET['cat']) ? $_GET['cat'] : "";
@@ -43,6 +56,16 @@ $res = mysqli_query($conn, $sql);
 </head>
 
 <body class="bg-light">
+    <!-- ALERT MESSAGES -->
+    <div class="container mt-3">
+        <?php if ($error_msg): ?>
+            <div class="alert alert-danger"><?= $error_msg ?></div>
+        <?php endif; ?>
+
+        <?php if ($success_msg): ?>
+            <div class="alert alert-success"><?= $success_msg ?></div>
+        <?php endif; ?>
+    </div>
 
 <div class="container py-4">
 

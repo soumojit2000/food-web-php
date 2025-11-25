@@ -18,6 +18,7 @@
 html {
   font-size: 62.5%;
   /* so now 1 rem = 10px */
+  
 }
 :root {
   --orange: #e7390e;
@@ -131,12 +132,17 @@ nav {
 }
 .navlist li a {
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bold;
   letter-spacing: 0.15rem;
   color: rgb(255, 255, 255);
   font-family: "Open Sans", sans-serif;
-  padding: 2rem 1.5rem;
+  padding: 2rem 2.1rem;
+}
+.log-p{
+  margin-top: 0.4rem !important;
+  font-size: 1.02rem !important;
+  
 }
 .navlist li a:hover {
   color: var(--orange);
@@ -494,172 +500,232 @@ input[type="submit"] {
   font-size: 1.8rem;
 }
 
-/* for MOBILE VIEW */
-@media (max-width: 480px) {
-  html {
-    font-size: 34%;
-  }
-  body,
-  html {
-    overflow-x: hidden;
-  }
-  main {
-    width: 100%;
-  }
-  .container {
-    width: 100%;
+/* ======================================
+   LARGE SCREENS → 1440px below
+======================================*/
+@media (max-width: 1440px) {
+  html { font-size: 58%; }
+  .navbar_brand a { font-size: 4.2rem; }
+  .navlist li a { padding: 1.8rem 1.8rem; font-size: 1.4rem; }
+  .about_text_img figure img { width: 110rem; }
+}
+
+/* ======================================
+   LAPTOP SCREEN → 1267px below
+   (NAVLINKS HIDE + TOGGLER SHOW)
+======================================*/
+@media (max-width: 1267px) {
+
+  nav {
+    justify-content: space-between;
   }
 
-  .navbar {
-    background-color: rgb(0, 0, 0);
-    padding: 0rem 0rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    z-index: 99;
-  }
-  .navbar_brand a {
-    font-family: "Acme", sans-serif;
-    color: white;
-    text-decoration: none;
-    font-size: 5rem;
-    margin: 1rem 0rem;
-    padding-bottom: 1rem;
-    letter-spacing: 0.1rem;
-    font-weight: bold;
-  }
-  .navbar_brand a span {
-    color: rgb(240, 84, 12);
-    text-decoration: none;
-    font-size: 5rem;
-  }
-  nav {
-    display: flex;
-    justify-content: center;
-    gap: 14rem;
-  }
   .toggler {
     display: block;
-    color: #ffffff;
     font-size: 3rem;
-    transform: translateX(13rem);
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
   }
+
   .navlist {
     display: none;
-  }
-  .showList {
-    display: block;
-  }
-  .banner {
-    height: 60vh;
-    width: 100vw;
-    background-size: cover;
-    background-position: center;
-  }
-  .banner .container {
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
-  .content h1 {
-    font-family: "Acme", sans-serif;
-    letter-spacing: 0.1rem;
-    font-size: 2.4rem;
-    color: white;
-    margin-top: 6rem;
-    margin-left: 3rem;
-  }
-  .content p {
-    font-size: 1.5rem;
-    margin-left: 6.3rem;
-    margin-bottom: 2.4rem;
-  }
-  .btn_white {
-    transform: translateX(-7.7rem);
-  }
-  .about_text_img {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 6rem;
-  }
-  .about_text ul li {
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.7rem;
-    transform: translateX(2.4rem);
-    line-height: 1.8;
-  }
-  .service_blocks {
-    flex-direction: column;
-  }
-  .gallery_images img {
+    background: black;
     width: 100%;
-    height: 100%;
+    text-align: center;
   }
-  .numbers h3 {
-    font-size: 3.6rem;
-    margin-bottom: 0.6rem;
+
+  .showList {
+    display: flex !important;
   }
-  .numbers p {
+
+  .navlist li a {
+    padding: 2rem 0;
     font-size: 1.8rem;
-    color: rgba(70, 68, 66, 0.836);
+    border-top: 1px solid rgba(255,255,255,0.1);
   }
-  .contact_container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+}
+
+/* ======================================
+   TABLET → 1024px
+======================================*/
+@media (max-width: 1024px) {
+
+  html { font-size: 54%; }
+
+  .about_text_img {
+    gap: 4rem;
   }
-  .contact_form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+  .about_text_img figure img {
+    width: 85rem;
+  }
+
+  .service_blocks {
     gap: 3rem;
   }
+}
+
+/* ======================================
+   TABLET PORTRAIT → 900px
+======================================*/
+@media (max-width: 900px) {
+
+  .about_text_img figure img {
+    width: 70rem;
+  }
+
+  .numbers h3 {
+    font-size: 4rem;
+  }
+
   .contact_form .name_email {
     width: 100%;
   }
+
   .contact_form input,
   textarea {
-    padding: 1.5rem 1rem;
     width: 100%;
   }
-  input[type="submit"] {
-    width: 20rem;
+}
+
+/* ======================================
+   SMALL TABLET → 768px 
+======================================*/
+@media (max-width: 768px) {
+
+  html { font-size: 50%; }
+
+  .about_text_img {
+    flex-direction: column;
   }
-  .footer {
-    background-color: black;
-    color: white;
-    padding: 2rem 0rem;
-    display: flex;
-    justify-content: space-around;
+
+  .about_text_img figure img {
+    width: 100%;
+  }
+
+  .service_blocks {
+    flex-direction: column;
     align-items: center;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.2rem;
   }
+
+  .gallery_blocks img{
+    width: 100%;
+  }
+
+  .numbers {
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+
   .footer_text {
-    margin-left: 0rem;
-    line-height: 1.5;
+    margin-left: 0;
   }
-  .footer_text a {
-    font-size: 1rem;
-    font-family: "Acme", sans-serif;
-  }
-  .footer_text .copyright a {
-    color: #f34013;
-    font-size: 1.2rem;
-  }
+
   .social_links {
-    list-style: none;
-    display: flex;
-    margin-right: 0rem;
-  }
-  .social_links li a {
-    color: #ccc;
-    margin-left: 2rem;
-  }
-  .icon4 {
-    font-size: 1.8rem;
+    margin-right: 0;
   }
 }
+
+/* ======================================
+   MOBILE → 576px
+======================================*/
+@media (max-width: 576px) {
+
+  html { font-size: 43%; }
+
+  .navbar_brand a {
+    font-size: 4rem;
+  }
+
+  nav {
+    justify-content: space-between;
+  }
+
+  .toggler {
+    font-size: 3.2rem;
+  }
+
+  .content h1 {
+    font-size: 3.2rem;
+  }
+
+  .content p {
+    font-size: 2rem;
+    margin-left: 3rem;
+  }
+
+  .btn_white {
+    margin-left: 0;
+    transform: translateX(0);
+  }
+
+  .gallery_images img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* ======================================
+   SMALL MOBILE → 480px
+======================================*/
+@media (max-width: 480px) {
+
+  html { font-size: 36%; }
+
+  .navbar_brand a {
+    font-size: 3.4rem;
+  }
+
+  .banner {
+    height: 63vh;
+  }
+
+  .content h1 {
+    font-size: 2.6rem;
+  }
+
+  .content p {
+    font-size: 1.8rem;
+  }
+
+  .footer_text a {
+    font-size: 1.8rem;
+  }
+
+  .icon4 {
+    font-size: 1.6rem;
+  }
+}
+
+/* ======================================
+   EXTRA SMALL MOBILE → 360px
+======================================*/
+@media (max-width: 360px) {
+
+  html { font-size: 32%; }
+
+  .content h1 {
+    font-size: 2.4rem;
+  }
+
+  .content p {
+    font-size: 1.4rem;
+  }
+
+  .navbar_brand a {
+    font-size: 3rem;
+  }
+
+  .service_item {
+    width: 100%;
+  }
+}
+

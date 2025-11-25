@@ -1,8 +1,13 @@
 <?php
 require 'config.php';
 
-// SQL to create the food table
-$sql = "CREATE TABLE IF NOT EXISTS food (
+echo "<h2>Table Setup:</h2>";
+
+/* ==============================
+   1) FOOD TABLE
+============================== */
+
+$sql1 = "CREATE TABLE IF NOT EXISTS food (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
@@ -14,12 +19,36 @@ $sql = "CREATE TABLE IF NOT EXISTS food (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
-if (mysqli_query($conn, $sql)) {
-    echo "<h2>Food Table Created Successfully!</h2>";
-    echo "<p><a href='index.php'>Go to Active Orders</a></p>";
-    echo "<p><a href='home.php'>Go to Home Page</a></p>";
+if (mysqli_query($conn, $sql1)) {
+    echo "food table created!<br>";
 } else {
-    echo "<h3 style='color:red;'>Error Creating Table:</h3>";
-    echo mysqli_error($conn);
+    echo "food table failed: ".mysqli_error($conn)."<br>";
 }
+
+
+/* ======================================================
+   2) USERS_FOOD TABLE → AUTO FIX (DROP + RECREATE)
+====================================================== */
+
+// Step A: DROP if exists
+$drop = "DROP TABLE IF EXISTS users_food";
+mysqli_query($conn, $drop);
+
+// Step B: CREATE new table (correct structure)
+$sql2 = "CREATE TABLE users_food(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    UNIQUE (email)
+)";
+
+if(mysqli_query($conn, $sql2)){
+    echo "users_food table created successfully!<br>";
+} else {
+    echo "users_food creation failed: " . mysqli_error($conn) . "<br>";
+}
+
+echo "<br><a href='login.php'>Go to Login Page</a>";
+
 ?>
