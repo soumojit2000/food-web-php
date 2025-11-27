@@ -659,7 +659,10 @@ input[type="submit"] {
 
   .content p {
     font-size: 2rem;
-    margin-left: 3rem;
+    margin-left: 5rem;
+  }
+  .content a{
+    margin-left: 12rem;
   }
 
   .btn_white {
@@ -693,7 +696,10 @@ input[type="submit"] {
   }
 
   .content p {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+  }
+  .content a{
+    margin-left: 9rem;
   }
 
   .footer_text a {
@@ -718,6 +724,9 @@ input[type="submit"] {
 
   .content p {
     font-size: 1.4rem;
+  }
+  .content a{
+    margin-left: 8rem;
   }
 
   .navbar_brand a {
