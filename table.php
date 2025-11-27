@@ -25,17 +25,8 @@ if (mysqli_query($conn, $sql1)) {
     echo "food table failed: ".mysqli_error($conn)."<br>";
 }
 
-
-/* ======================================================
-   2) USERS_FOOD TABLE → AUTO FIX (DROP + RECREATE)
-====================================================== */
-
-// Step A: DROP if exists
-$drop = "DROP TABLE IF EXISTS users_food";
-mysqli_query($conn, $drop);
-
-// Step B: CREATE new table (correct structure)
-$sql2 = "CREATE TABLE users_food(
+// Step B: CREATE users table
+$sql2 = "CREATE TABLE IF NOT EXISTS users_food(
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -49,6 +40,23 @@ if(mysqli_query($conn, $sql2)){
     echo "users_food creation failed: " . mysqli_error($conn) . "<br>";
 }
 
-echo "<br><a href='login.php'>Go to Login Page</a>";
+//step C: create cart-table:
 
+$sql3 = "CREATE TABLE IF NOT EXISTS cart (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    quantity INT NOT NULL,
+    image VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+
+if (mysqli_query($conn, $sql3)) {
+    echo "Cart table created successfully!<br>";
+    
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+echo "<br><a href='login.php'>Go to Login Page</a>";
 ?>
